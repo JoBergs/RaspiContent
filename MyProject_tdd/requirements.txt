@@ -1,5 +1,0 @@
-pytest
-ipython
-ipdb
-mock
-pytest-cov
