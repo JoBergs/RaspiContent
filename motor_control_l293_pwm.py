@@ -43,7 +43,7 @@ class Motor:
         self.pwm_backward.ChangeDutyCycle(0)
 
 motor1 = Motor(16, 22, 18)
-motor2 = Motor(21, 19, 23)
+motor2 = Motor(23, 19, 21)
 
 # Motor 1 test
 motor1.forward(90)
