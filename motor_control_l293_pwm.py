@@ -24,7 +24,7 @@ class Motor:
     def forward(self, speed):
         """ pinForward is the forward Pin, so we change its duty
              cycle according to speed. """
-
+        self.pwm_backward.ChangeDutyCycle(0)
         self.pwm_forward.ChangeDutyCycle(speed)
         #GPIO.output(self.pinBackward,GPIO.LOW)      
 
@@ -32,6 +32,7 @@ class Motor:
         """ pinBackward is the forward Pin, so we change its duty
              cycle according to speed. """
 
+        self.pwm_forward.ChangeDutyCycle(0)
         self.pwm_backward.ChangeDutyCycle(speed)
         #GPIO.output(self.pinBackward,GPIO.LOW)
 
