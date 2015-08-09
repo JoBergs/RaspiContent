@@ -26,14 +26,14 @@ class Motor:
              cycle according to speed. """
 
         self.pwm_forward.ChangeDutyCycle(speed)
-        GPIO.output(self.pinBackward,GPIO.LOW)      
+        #GPIO.output(self.pinBackward,GPIO.LOW)      
 
     def backward(self, speed):
         """ pinBackward is the forward Pin, so we change its duty
              cycle according to speed. """
 
         self.pwm_backward.ChangeDutyCycle(speed)
-        GPIO.output(self.pinBackward,GPIO.LOW)
+        #GPIO.output(self.pinBackward,GPIO.LOW)
 
     def stop(self):
         """ Set the duty cycle of both control pins to zero to stop the motor. """
