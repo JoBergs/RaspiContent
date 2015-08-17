@@ -1,7 +1,6 @@
 #!/usr/bin/python
 #encoding: utf-8
 
-
 import math
 import time
 
@@ -22,11 +21,11 @@ class Joker:
 
         for word in words:
             if len(sentence + word) + 1 >=16:
+                # sentence becomes too long or a single line -> new sentence
                 parts.append(sentence + '\n')
                 sentence = word + ' '
             else:
                 sentence += word + ' '
-
         else:
             parts.append(sentence)
 
@@ -43,7 +42,6 @@ class Joker:
             self.lcd.message(row1 + row2)
             time.sleep(3.0)
         
-
         time.sleep(3.0)
         self.lcd.clear()
 
