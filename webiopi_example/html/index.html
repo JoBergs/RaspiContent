@@ -10,7 +10,7 @@
                 // perform_calculation is called after Python returns the value
                 // of the count_a_lot function called by the Calculate button
                 var perform_calculation = function(macro, args, response) {
-                    $("#inputOn").val(response);
+                    $("#textResult").val(response);
                 }
 
                 // Create a "Light" labeled button for GPIO 17
@@ -60,7 +60,7 @@
         </style>
 </head>
 <body>
-        <div align="center">Counted to :<input type="text" id="inputOn" value="0"/><br/><br/>
+        <div align="center">Counted to :<input type="text" id="textResult" value="0"/><br/><br/>
         <div id="controls" align="center"></div>
 </div>
 </body>
