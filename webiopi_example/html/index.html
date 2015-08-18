@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>WebIOPi | Example App</title>
+        <script type="text/javascript" src="/webiopi.js"></script>
+        <script type="text/javascript">
+        webiopi().ready(function() {
+
+                // perform_calculation is called after Python returns the value
+                // of the count_a_lot function called by the Calculate button
+                var perform_calculation = function(macro, args, response) {
+                    $("#inputOn").val(response);
+                }
+
+                // Create a "Light" labeled button for GPIO 17
+                var light_button = webiopi().createGPIOButton(17, "Light");
+
+                // Create a button to call Calculate macro
+                var calculate_button = webiopi().createButton("calculate_button", "Calculate", function() {
+                    // Call the count_a_lot macro and connect it to perform_calculation
+                    webiopi().callMacro("count_a_lot", [], perform_calculation);
+                });
+
+                // Create a button to call Shutdown macro
+                var shutdown_button = webiopi().createButton("shutdown_button", "Shutdown", function() {
+                       // Call the macro
+                    webiopi().callMacro("shutdown_raspi", [], '');
+                });
+
+                // Append buttons to HTML element with ID="controls" using jQuery
+                $("#controls").append(light_button);
+                $("#controls").append(calculate_button);
+                $("#controls").append(shutdown_button);
+
+                // Refresh GPIO buttons
+                // pass true to refresh repeatedly of false to refresh once
+                webiopi().refreshGPIO(true);
+        });
+                
+        </script>
+        <style type="text/css">
+                button {
+                        display: block;
+                        margin: 5px 5px 5px 5px;
+                        width: 160px;
+                        height: 45px;
+                        font-size: 24pt;
+                        font-weight: bold;
+                        color: white;
+                }
+                
+                #gpio17.LOW {
+                        background-color: Black;
+                }
+                
+                #gpio17.HIGH {
+                        background-color: Blue;
+                }
+        </style>
+</head>
+<body>
+        <div align="center">Counted to :<input type="text" id="inputOn" value="0"/><br/><br/>
+        <div id="controls" align="center"></div>
+</div>
+</body>
+</html>

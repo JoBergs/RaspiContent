@@ -21,7 +21,7 @@ class Joker:
 
         for word in words:
             if len(sentence + word) + 1 >=16:
-                # sentence becomes too long or a single line -> new sentence
+                # sentence becomes too long for a single line -> new sentence
                 parts.append(sentence + '\n')
                 sentence = word + ' '
             else:
