@@ -23,7 +23,7 @@ GPIO.setup(rows + columns, GPIO.OUT)
 #       i += 1
 #  
 
-def convert_decimal_to_pins(number):
+def convert_to_decimal(number):
     pin_list = []
     number = number % 10  
 
@@ -40,12 +40,49 @@ def convert_decimal_to_pins(number):
                 break;
             i += 1   
 
-    return pin_list    
+    return pin_list   
+
+
+def convert_to_binary(number):
+    pin_list = [] 
+
+    i = 0
+    for col in columns:
+        pin_list.append(col)
+        #GPIO.output(columns[col], GPIO.HIGH)
+        for row in rows:
+
+            if i < number:
+                pin_list.append(row)
+                #GPIO.output(columns[col], GPIO.HIGH)
+            else:
+                break;
+            i += 1   
+
+    return pin_list  
+
+def display_pins(pin_list):
+    for pin in pin_list:
+         GPIO.output(pin, GPIO.HIGH)
+
+def all_off():
+    for pin in columns + rows:  
+        GPIO.output(pin, GPIO.LOW)  
+
+def display_number(number = 5, numbering='decimal'):
+    all_off()
+    number = number % 10
+    if numbering == 'decimal':
+        pin_list = convert_to_decimal(number)
+    else:
+        pin_list = convert_to_binary(number)
+    display_pins(pin_list)
 
 # make function all_off 
 
 if __name__ == '__main__':
-    print(convert_decimal_to_pins(366))
+    display_number()
+    #print(convert_decimal_to_pins(366))
     '''
     GPIO.output(columns[0], GPIO.HIGH)
     GPIO.output(rows[0], GPIO.HIGH)
