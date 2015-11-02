@@ -82,6 +82,8 @@ def display_number(number = 5, numbering='decimal'):
 
 if __name__ == '__main__':
     display_number()
+    sleep(2)
+    all_off()
     #print(convert_decimal_to_pins(366))
     '''
     GPIO.output(columns[0], GPIO.HIGH)
