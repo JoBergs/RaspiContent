@@ -2,7 +2,7 @@
 #encoding:utf-8
 
 # Sample script for the Tutorial "Building a simple LED display" on
-# http://www.knight-of-pi.org/building-a-simple-led-display
+# http://www.knight-of-pi.org/building-a-simple-led-display/
 
 from time import sleep
 import RPi.GPIO as GPIO
