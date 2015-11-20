@@ -72,31 +72,22 @@ def display_number(number=5, as_binary=False, duration=False):
 
 if __name__ == '__main__':
 
-    
-    # self-testing code
-    all_off()
-    display_number(6)
-    sleep(3)
-    all_off()
-    #display_number(7)
-    #sleep(3)
-    #display_number(8)
-    #sleep(3)
+    try:
+        for i in range(9):
+            display_number(i)
+            sleep(0.5)
 
-    for i in range(9):
-        display_number(i)
-        sleep(0.5)
+        # same effect since we sleep in the loop above
+        #for i in range(9):
+        #    display_number(i, duration=0.5)
+        
+      
+        for i in range(255):
+            display_number(i, True)
+            sleep(0.2)
 
-    # same effect since we sleep in the loop above
-    #for i in range(9):
-    #    display_number(i, duration=0.5)
-    
-  
-    for i in range(255):
-        display_number(i, True)
-        sleep(0.2)
-
-    all_off()
+    finally:
+        GPIO.cleanup()
     
 
 
