@@ -8,6 +8,8 @@
 #   make a decorator: display the(int) return value(binary, decimal, permanent, timed)
 #   cleanup
 
+# the display needs to be independent from the transmission
+
 from time import sleep
 import RPi.GPIO as GPIO
 
