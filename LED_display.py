@@ -70,50 +70,9 @@ def display_number(number=5, as_binary=False, duration=False):
 
 # fuse sender and receiver into one class?
 
-# This is the sender script:
-'''
-# Type B example: address group = 1, channel = 1
-import pi_switch
-from time import sleep
-sender = pi_switch.RCSwitchSender()
-sender.enableTransmit(0) # use WiringPi pin 0
-num = 1
-while True:
-    print 'sending'
-    sleep(2)
-    sender.sendDecimal(num, 24)
-    num += 1
-    print(num)
-    #sender.send('00010111')
-    #sleep()
-#sender.send("000101010001010101010101") # switch on
-#sender.send("000101010001010101010100") # switch off
-'''
-
 if __name__ == '__main__':
-    # this is the receiver script, currently on for vidmaking
-    receiver = RCSwitchReceiver()
-    receiver.enableReceive(2)
 
-    num = 0
-
-    while True:
-        print 'listening'
-        sleep(0.5)
-        if receiver.available():
-            received_value = receiver.getReceivedValue()
-            if received_value:
-                num += 1
-                print("Received[%s]:" % num)
-                display_number(received_value, True)
-                print(received_value)
-                print("%s / %s bit" % (received_value, receiver.getReceivedBitlength()))
-                print("Protocol: %s" % receiver.getReceivedProtocol())
-                print("")
-
-            receiver.resetAvailable()
-
-    '''
+    
     # self-testing code
     all_off()
     display_number(6)
@@ -138,7 +97,7 @@ if __name__ == '__main__':
         sleep(0.2)
 
     all_off()
-    '''
+    
 
 
     
