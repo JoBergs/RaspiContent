@@ -1,20 +1,11 @@
 #!/usr/bin/python
 #encoding:utf-8
 
-# TODO:
-#   move into seperate repository
-#   make a package
-#   add 'permanent' option
-#   make a decorator: display the(int) return value(binary, decimal, permanent, timed)
-#   cleanup
-
-# the display needs to be independent from the transmission
+# Sample script for the Tutorial "Building a simple LED display" on
+# http://www.knight-of-pi.org/building-a-simple-led-display
 
 from time import sleep
 import RPi.GPIO as GPIO
-
-from pi_switch import RCSwitchReceiver
-from time import sleep
 
 
 GPIO.setmode(GPIO.BOARD)
@@ -22,73 +13,48 @@ pins = [10, 11, 15, 16, 32, 33, 35, 36]
 GPIO.setup(pins, GPIO.OUT)
 
 
-def convert_to_decimal(number):
-    return pins[:min(number,9)]
-
-def convert_to_binary(number):
-    binary = bin(number)[-2::-1]
-    print(binary)
-    return [pins[i] for i in range(len(binary)) if binary[i] == '1']
-
-
-def display_pins(pin_list, duration):
-    GPIO.output(pin_list, GPIO.HIGH)
-    if duration:
-        sleep(duration)
-        all_off()
-
 def all_off():
     GPIO.output(pins, GPIO.LOW)  
 
-# permanent should be delay interval
-# if duration is False, the lights stay on until a new signal arrives
-#   if duration is an float > 0, the leds will be lighted for that number of seconds
-def display_number(number=5, as_binary=False, duration=False):
-    all_off()
-    print(number, as_binary, duration)
+def get_binary_pins(number):
+    """ Convert a decimal number into a list of pins fitting its binary
+         representation. """
 
-    pin_list = convert_to_decimal(number)
+    binary = bin(number)[2:]
+    return [pins[i] for i in range(len(binary)) if binary[i] == '1']
+
+def display_pins(pin_list, duration):
+    """ Trigger all pins in pin_list on for duration seconds. """
+
+    all_off()
+    GPIO.output(pin_list, GPIO.HIGH)
+    sleep(duration)
+    all_off()
+
+def display_number(number=5, as_binary=False, duration=0.2):
+    """ Wrapper for displaying either a binary or a decimal number. """
+
+    # the first n, n < 9 pins directly represent decimal numbers  
+    pin_list = pins[:min(number,8)]
 
     if as_binary:
-        pin_list = convert_to_binary(number)
+        pin_list = get_binary_pins(number)
 
     display_pins(pin_list, duration)
 
 
-# make parameter 'permanent' which decides wheter all_off is executed after displaying
-
-# could this be made a decorator? how do i use it in RL?
-
-# a decorator which displays the return value?
-
-
-# needs to be importable
-
-# rethink: binary should be a flag
-
-# keyboard interrupt -> GPIO.cleanup()
-
-# fuse sender and receiver into one class?
-
 if __name__ == '__main__':
 
+    # test code
     try:
         for i in range(9):
-            display_number(i)
-            sleep(0.5)
+            display_number(i, duration=0.5)
 
-        # same effect since we sleep in the loop above
-        #for i in range(9):
-        #    display_number(i, duration=0.5)
-        
-      
         for i in range(255):
             display_number(i, True)
-            sleep(0.2)
 
     finally:
         GPIO.cleanup()
-    
 
 
     
