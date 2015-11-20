@@ -38,7 +38,7 @@ def display_number(number=5, as_binary=False, duration=0.2):
     pin_list = pins[:min(number,8)]
 
     if as_binary:
-        pin_list = get_binary_pins(number)
+        pin_list = get_binary_pins(min(number, 255))
 
     display_pins(pin_list, duration)
 
