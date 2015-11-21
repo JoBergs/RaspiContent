@@ -8,13 +8,13 @@ from random import randint
 
 from RPi.GPIO import cleanup
 
-from pi_switch import RCSwitchReceiver
+from pi_switch import RCSwitchReceiver, RCSwitchSender
 
 from LED_display import display_number
 
 
 def run_sender():
-    sender = pi_switch.RCSwitchSender()
+    sender = RCSwitchSender()
     sender.enableTransmit(0) # use WiringPi pin 0
     num = 1
 
@@ -34,7 +34,7 @@ def run_receiver():
 
         if receiver.available():
             received_value = receiver.getReceivedValue()
-            
+
             if received_value:
                 display_number(received_value % 256, True)
 
