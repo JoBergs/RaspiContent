@@ -18,12 +18,14 @@
 from time import sleep
 from random import randint
 
-import RPi.GPIO as GPIO
+from RPi.GPIO import cleanup
 
 from pi_switch import RCSwitchReceiver
 
+from LED_display import display_number
 
 
+'''
 GPIO.setmode(GPIO.BOARD)
 pins = [10, 11, 15, 16, 32, 33, 35, 36]
 GPIO.setup(pins, GPIO.OUT)
@@ -60,6 +62,7 @@ def display_number(number=5, as_binary=False, duration=False):
         pin_list = convert_to_binary(number)
 
     display_pins(pin_list, duration)
+'''
 
 
 # make parameter 'permanent' which decides wheter all_off is executed after displaying
@@ -98,27 +101,32 @@ while True:
 '''
 
 if __name__ == '__main__':
-    # this is the receiver script, currently on for vidmaking
+
     receiver = RCSwitchReceiver()
     receiver.enableReceive(2)
 
     num = 0
 
-    while True:
-        display_number(randint(0, 100), True, 0.2)
-        print 'listening'
-        sleep(0.5)
-        if receiver.available():
-            received_value = receiver.getReceivedValue()
-            if received_value:
-                num += 1
-                print("Received[%s]:" % num)
-                display_number(received_value, True)
-                print(received_value)
-                print("%s / %s bit" % (received_value, receiver.getReceivedBitlength()))
-                print("Protocol: %s" % receiver.getReceivedProtocol())
-                print("")
+    try:
+        while True:
+            #display_number(randint(0, 100), True, 0.2)
+            print 'Listening...'
+            sleep(0.5)
+            if receiver.available():
+                received_value = receiver.getReceivedValue()
+                if received_value:
+                    num += 1
+                    #print("Received[%s]:" % num)
+                    # needs a % 256
+                    display_number(received_value % 256, True)
+                    # cleanup below
+                    print("Value: %s | Bit: %s | Protocol: %s" % (received_value,
+                            receiver.getReceivedBitlength(),
+                            receiver.getReceivedProtocol()))
+                    #print("Protocol: %s\n" % receiver.getReceivedProtocol())
 
-            receiver.resetAvailable()   
+                receiver.resetAvailable()   
+    finally:
+        cleanup()
     
     
