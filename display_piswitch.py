@@ -1,19 +1,7 @@
 #!/usr/bin/python
 #encoding:utf-8
 
-
-# naaaah: just try importing the required functions, but make the script multipurpose!
-
-# needs to be classbased
-
-# TODO:
-#   move into seperate repository
-#   make a package
-#   add 'permanent' option
-#   make a decorator: display the(int) return value(binary, decimal, permanent, timed)
-#   cleanup
-
-# the display needs to be independent from the transmission
+import sys
 
 from time import sleep
 from random import randint
@@ -24,27 +12,38 @@ from pi_switch import RCSwitchReceiver
 
 from LED_display import display_number
 
-# fuse sender and receiver into one class?
 
-# This is the sender script:
-'''
-# Type B example: address group = 1, channel = 1
-import pi_switch
-from time import sleep
-sender = pi_switch.RCSwitchSender()
-sender.enableTransmit(0) # use WiringPi pin 0
-num = 1
-while True:
-    print 'sending'
-    sleep(2)
-    sender.sendDecimal(num, 24)
-    num += 1
-    print(num)
-    #sender.send('00010111')
-    #sleep()
-#sender.send("000101010001010101010101") # switch on
-#sender.send("000101010001010101010100") # switch off
-'''
+def run_sender():
+    sender = pi_switch.RCSwitchSender()
+    sender.enableTransmit(0) # use WiringPi pin 0
+    num = 1
+    while True:
+        print 'sending'
+        sleep(1)
+        sender.sendDecimal(num, 24)
+        num += 1
+        print(num)
+
+def run_receiver():
+    while True:
+        display_number(randint(0, 100), True, 0.2)
+        print 'Listening...'
+        sleep(1)
+        if receiver.available():
+            received_value = receiver.getReceivedValue()
+            if received_value:
+                num += 1
+                #print("Received[%s]:" % num)
+                # needs a % 256
+                display_number(received_value % 256, True)
+                # cleanup below
+                print("Value: %s | Bit: %s | Protocol: %s" % (received_value,
+                        receiver.getReceivedBitlength(),
+                        receiver.getReceivedProtocol()))
+                #print("Protocol: %s\n" % receiver.getReceivedProtocol())
+
+            receiver.resetAvailable()  
+
 
 if __name__ == '__main__':
 
@@ -54,24 +53,12 @@ if __name__ == '__main__':
     num = 0
 
     try:
-        while True:
-            #display_number(randint(0, 100), True, 0.2)
-            print 'Listening...'
-            sleep(0.5)
-            if receiver.available():
-                received_value = receiver.getReceivedValue()
-                if received_value:
-                    num += 1
-                    #print("Received[%s]:" % num)
-                    # needs a % 256
-                    display_number(received_value % 256, True)
-                    # cleanup below
-                    print("Value: %s | Bit: %s | Protocol: %s" % (received_value,
-                            receiver.getReceivedBitlength(),
-                            receiver.getReceivedProtocol()))
-                    #print("Protocol: %s\n" % receiver.getReceivedProtocol())
-
-                receiver.resetAvailable()   
+        # HACKish: anything besides "sender" being the last parameter
+        #                creates a receiver
+        if sys.argv[-1] == "sender":
+            run_sender()
+        else:
+            run_receiver() 
     finally:
         cleanup()
     
