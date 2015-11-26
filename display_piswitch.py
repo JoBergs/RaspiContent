@@ -30,10 +30,9 @@ def run_receiver():
 
     while True:
         print 'Listening...'
-        sleep(0.1)
+        sleep(0.5)
 
         if receiver.available():
-            #print 'yes'
             received_value = receiver.getReceivedValue()
 
             if received_value:

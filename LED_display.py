@@ -20,7 +20,8 @@ def get_binary_pins(number):
     """ Convert a decimal number into a list of pins fitting its binary
          representation. """
 
-    binary = bin(number)[2:]
+    binary = bin(number)[2:][::-1]
+
     return [pins[i] for i in range(len(binary)) if binary[i] == '1']
 
 def display_pins(pin_list, duration):
