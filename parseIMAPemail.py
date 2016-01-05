@@ -79,8 +79,8 @@ def loop(args):
 
     server = IMAPClient(args.host, use_uid=True, ssl=True)
     server.login(args.username, args.pwd)   
+    
     select_info = server.select_folder(MAILBOX)
-
     messages = server.search(['UNSEEN'])
     all_unread = server.fetch(messages, ['RFC822'])
     scan_emails(args, all_unread)
