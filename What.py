@@ -4,8 +4,12 @@
 # on a Raspberry Pi. For fun, an ultrasonic sensor was added. If Jasper is running
 # and hears the command 'What', the distance to the ultrasonic sensor is measured
 # and Jasper tells the result.
-# This script is a part of the tutorial
-# 
+# Before running this script with or without Jasper, PiGPIO (Website: http://abyz.co.uk/rpi/pigpio/)
+# needs to be installed for sudoless GPIO access pre Raspbian Jessie. 
+# Then, pigpiod needs to be activated with
+# sudo pigpiod
+# This script is a part of the tutorial at
+# www.knight-of-pi.org/raspberry-pi-and-jasper-a-custom-voice-command-for-measuring-the-distance
 
 import re, time
 
@@ -50,8 +54,7 @@ def handle(text, mic, profile):
         profile -- contains information related to the user (e.g., phone
                    number)
     """
-
-    distance = 10.3
+    
     distance = measure_distance()
     mic.say("The distance is " + str(round(distance, 1)) + " centimeters.")
 
