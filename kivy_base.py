@@ -16,7 +16,7 @@ BoxLayout:
     Label:
         text: 'Hello World!' 
     Label:
-        text: 'Bla' 
+        text: 'Bla'
 '''
 
 
