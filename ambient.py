@@ -5,18 +5,30 @@ import kivy
 kivy.require('1.9.0')
 
 from kivy.app import App
+from kivy.lang import Builder
 
 from kivy.uix.button import Label
 
-class Hello2App(App):
+kv = '''
+<Label>:
+    text: 'Hello World!' 
+'''
+
+Builder.load_string(kv)
+
+class AmbientApp(App):
     def build(self):
         return Label()
 
 if __name__ == '__main__':
-    Hello2App().run() 
+    AmbientApp().run() 
 
 
 '''
+    GPIO.setup(self.pinForward, GPIO.OUT)
+    GPIO.setup(self.pinBackward, GPIO.OUT)
+    GPIO.setup(self.pinControl, GPIO.OUT)
+
 from time import sleep
 import RPi.GPIO as GPIO
 
