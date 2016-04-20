@@ -16,7 +16,7 @@ from kivy.uix.button import Label
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 
-RED , GREEN, BLUE = 11, 12, 13 
+RED , GREEN, BLUE = 11, 12, 13 # BOARD numbering
 GPIO.setup([RED, GREEN, BLUE], GPIO.OUT)
 
 # setup sofware pulse width modulation - pwm
@@ -32,19 +32,13 @@ blue_pwm.start(50)
 kv = '''
 MyLayout:
     orientation: 'vertical'
-    redslider: _redslider
-    greenslider: _greenslider
-    blueslider: _blueslider
     MySlider:
-        id: _redslider
         mycolor: 'red'
         on_value: self.set_color(*args)
     MySlider:
-        id: _greenslider
         mycolor: 'green'
         on_value: self.set_color(*args)
     MySlider:
-        id: _blueslider
         mycolor: 'blue'
         on_value: self.set_color(*args)
     Button:
