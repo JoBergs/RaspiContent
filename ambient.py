@@ -9,7 +9,6 @@ kivy.require('1.9.0')
 from kivy.app import App
 from kivy.lang import Builder
 
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.slider import Slider
 from kivy.uix.button import Label
 
@@ -30,7 +29,7 @@ green_pwm.start(50)
 blue_pwm.start(50)
 
 kv = '''
-MyLayout:
+BoxLayout:
     orientation: 'vertical'
     MySlider:
         mycolor: 'red'
@@ -41,25 +40,8 @@ MyLayout:
     MySlider:
         mycolor: 'blue'
         on_value: self.set_color(*args)
-    Button:
-        text: 'Test'
-        size_hint: .2, .2
-        pos_hint: {'center_x':.5,'center_y':.5}
-        on_press: root.test_func(*args)
         
 '''
-
-class MyLayout(BoxLayout):
-    def __init__(self, **kwargs):
-        super (MyLayout, self).__init__(**kwargs)
-
-    def test_func(self, instance):
-        blink(RED)
-
-def blink(color):
-    GPIO.output(color, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(color, GPIO.LOW)
 
 class MySlider(Slider):
     def __init__(self, **kwargs):
