@@ -1,5 +1,16 @@
 #!/usr/bin/python2.7
 
+# Sample script for demonstrating face detection with OpenCV on a 
+# Raspberry Pi. The script takes an image as input parameter or makes
+# a snapshot with the Pi camera module when no input is provided.
+# Then, the image is searched for faces and the faces found are examined
+# for eyes. The results are displayed graphically; therefore, the script needs
+# a running desktop environment.
+
+# See the tutorial
+# http://www.opencv-primer-face-detection-with-the-raspberry-pi
+# for more info!
+
 import sys
 from time import sleep
 import cv2
