@@ -53,11 +53,10 @@ try:
         if at_home:
             GPIO.output(pin_LED, GPIO.HIGH)
 
-        at_home = False
-
         print "Scanning for bluetooth devices..."
         results = search()
 
+        at_home = False
         for addr, name in results:
             if addr == phone:
                 at_home = True
