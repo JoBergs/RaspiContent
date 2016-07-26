@@ -3,4 +3,3 @@ ipython
 ipdb
 mock
 pytest-cov
-python-dev
