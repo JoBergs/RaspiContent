@@ -26,11 +26,11 @@ def measure_distance():
 
     while GPIO.input(echo) == 0: pass
 
-    start = time.time()  # reached when signal arrived
+    start = time.time()  # reached when echo starts listening
 
     while GPIO.input(echo) == 1:  pass
 
-    end = time.time() # reached when signal died
+    end = time.time() # reached when the signal arrived
 
     distance = ((end - start) * 34300) / 2
 
