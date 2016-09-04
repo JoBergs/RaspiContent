@@ -2,7 +2,8 @@
  
 # Written by Limor "Ladyada" Fried for Adafruit Industries, (c) 2015
 # This code is released into the public domain
-# Modified by Johannes "Knight of Pi" Bergs for module usage.
+# Modified by Johannes "Knight of Pi" Bergs for displaying state with LED
+# and modified for import as module.
 
 from time import sleep
 
@@ -10,8 +11,8 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 
-# setup pwm LED
-LED = 17
+# init LED pwm
+LED = 17 
 
 GPIO.setup(LED, GPIO.OUT)
 
@@ -23,7 +24,7 @@ pwm_LED.start(0)
 SPICLK = 16  # BOARD 36
 SPIMISO = 19  # BOARD 35
 SPIMOSI = 20  # BOARD 38
-SPICS = 25  # BOARD 35
+SPICS = 25  # BOARD 22
  
 # set up the SPI interface pins
 GPIO.setup([SPIMOSI, SPICLK, SPICS], GPIO.OUT)
@@ -33,7 +34,7 @@ GPIO.setup(SPIMISO, GPIO.IN)
 potentiometer_adc = 0;
 
  
-# read SPI data from MCP3008 (or MCP3002???) chip, 8 possible adc's (0 thru 7)
+# read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
 def readadc(adcnum, clockpin, mosipin, misopin, cspin):
         if ((adcnum > 7) or (adcnum < 0)):
                 return -1
@@ -74,13 +75,12 @@ def read_potentiometer():
  
 
 if __name__ == "__main__":
-    """ Test reading the potentiomenter. """
-
     import time
 
     while True:
         trim_pot = readadc(potentiometer_adc, SPICLK, SPIMOSI, SPIMISO, SPICS)
         print("trim_pot:", trim_pot)
         print("normalized: ", round(trim_pot / 1024.0, 2))
+        # display with LED in 100 steps
         pwm_LED.ChangeDutyCycle(int(trim_pot/10.2))
         time.sleep(0.5)
