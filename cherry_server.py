@@ -15,7 +15,7 @@ class RaspiServer(object):
           <body>
             <form method="get" action="blink">
               <input type="text" value="13" name="pin_str" />
-              <button type="submit">Give it now!</button>
+              <button type="submit">Blink now!</button>
             </form>
           </body>
         </html>"""
