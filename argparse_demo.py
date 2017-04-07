@@ -11,7 +11,8 @@ parser.add_argument('-g', '--gui', action='store_true',
                                       help='Start in graphical mode if given')
 parser.add_argument('-o', '--output', nargs='?', metavar='path', 
                                      type=str, default="~/output.txt",
-                                     help='Store program output ni the file passed after -o')
+                                     help='Store program output in the file passed after -o')
 
 arguments = parser.parse_args(sys.argv[1:])
 print(arguments)
+print("GUI enabled? ", arguments.gui)
