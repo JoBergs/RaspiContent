@@ -3,7 +3,7 @@
 
 from random import choice, randint
 
-from webiopi import sleep
+from time import sleep
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
