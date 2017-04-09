@@ -11,66 +11,97 @@ GPIO.setmode(GPIO.BOARD)
 RED_PIN , GREEN_PIN, BLUE_PIN = 11, 12, 13 # BOARD numbering
 GPIO.setup([RED_PIN, GREEN_PIN, BLUE_PIN], GPIO.OUT)
 
-# implement color as property that receives values (0.0, 0.0, 0.0) -> (1.0, 1.0, 1.0)???
-# stripe.color = [100, 50, 10]
+# TODO
+#   implement color as property that receives values (0.0, 0.0, 0.0) -> (1.0, 1.0, 1.0)???
+#       stripe.color = [100, 50, 10]
+#   dot dict for less obfuscation
+#   there must be nicer ways for permutating colors...
+#   make delay an LEDStrip attribute
+#   CLI
 
 
-class LEDStripe:
+class LEDStrip:
+    color = None
+
     def __init__(self, color = [0, 0, 0]):
+        """ Store initial color, create sPWM channels accordingly. """
 
-        self.store_color(color)
+        self.color = color[:]
 
         self.red_pwm = GPIO.PWM(RED_PIN, 100)
         self.green_pwm = GPIO.PWM(GREEN_PIN, 100)
         self.blue_pwm = GPIO.PWM(BLUE_PIN, 100)
 
-        self.red_pwm.start(self.red)
-        self.green_pwm.start(self.green)
-        self.blue_pwm.start(self.blue)
+        self.red_pwm.start(self.color[0])
+        self.green_pwm.start(self.color[1])
+        self.blue_pwm.start(self.color[2])
 
-    def store_color(self, color):
-        self.red = color[0]
-        self.green =  color[1]
-        self.blue =  color[2]
+    def update_color(self):
+        """ Update PWM values for all color channels. """
+
+        self.red_pwm.ChangeDutyCycle(self.color[0]) 
+        self.green_pwm.ChangeDutyCycle(self.color[1]) 
+        self.blue_pwm.ChangeDutyCycle(self.color[2])  
+
+    def morph_step(self, target_color):
+        """ Morph self.color randomly into the direction of target_color by one step. """
+
+        available = []
+
+        # move along, there is nothing to see here
+        for i in range(3):
+            if self.color[i] != target_color[i]:
+                available.append(i)
+
+        if available:
+            color_index = choice(available)
+
+            if self.color[color_index] > target_color[color_index]:
+                self.color[color_index] -= 1
+            else:
+                self.color[color_index] += 1
+
+        self.update_color()
 
 
-    def set_color(self, color=None):
-        ''' color is a list with three values red, green and blue, 
-        each from 0 to 100: [0,0,0] .. [100, 100, 100] '''
+    def morph_color(self, target_color = None, delay=0.1):
+        """ Applies morph_steph until the target_color is reached. """       
 
-        if color:
-            self.store_color(color)
+        if not target_color:
+            target_color = [randint(0, 100) for x in range(3)]
 
-        self.red_pwm.ChangeDutyCycle(self.red) 
-        self.green_pwm.ChangeDutyCycle(self.green) 
-        self.blue_pwm.ChangeDutyCycle(self.blue)     
-        
+        print("current color (RGB): ", self.color)
+        print("target color (RGB): ", target_color)
 
-def morph_color(current_color, target_color):
-    """ Morph current_color into the direction of target_color by one step. """
+        while target_color != self.color:
+            self.morph_step(target_color)
+            sleep(delay)
 
-    # build indices
-    available = []
+    def test_channels(self):
+        """ Test all channels. """
 
-    for i in range(3):
-        if current_color[i] != target_color[i]:
-            available.append(i)
+        print('RED active')
+        self.morph_color([100, 0, 0])
+        sleep(1)
+        print('GREEN active')
+        self.morph_color([0, 100, 0])
+        sleep(1)
+        print('BLUE active')
+        self.morph_color([0, 0, 100])
+        sleep(1)
 
-    if available:
-        color_index = choice(available)
-
-        if current_color[color_index] > target_color[color_index]:
-            current_color[color_index] -= 1
-        else:
-            current_color[color_index] += 1
-
-    return current_color
 
 if __name__ == '__main__':
     try:
-        stripe = LEDStripe()
-        stripe.set_color([20, 50, 70])
-        sleep(3)        
+        strip = LEDStrip()
+
+        # ENABLE THIS for testing color channels
+        #strip.test_channels()
+
+        # mix colors 'til the end of the days
+        while True:
+            strip.morph_color()
+            sleep(3)        
     except Exception as e:
         print(e)
 
