@@ -46,12 +46,8 @@ class LEDStrip:
     def morph_step(self, target_color):
         """ Morph self.color randomly into the direction of target_color by one step. """
 
-        available = []
-
-        # move along, there is nothing to see here
-        for i in range(3):
-            if self.color[i] != target_color[i]:
-                available.append(i)
+        # list of the indices of colors that still need to be changed to reach target_color
+        available = [i for i in range(3) if self.color[i] != target_color[i]]
 
         if available:
             color_index = choice(available)
