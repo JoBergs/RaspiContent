@@ -32,7 +32,6 @@ class RaspiServer(object):
         return "Blinked on Pin " + str(pin) 
 
 
-
 if __name__ == '__main__':
     cherrypy.config.update({'server.socket_host': '0.0.0.0'})
     cherrypy.quickstart(RaspiServer())
