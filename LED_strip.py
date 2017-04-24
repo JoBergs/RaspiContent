@@ -1,5 +1,5 @@
 # This is the code for a Raspberry Pi RGB color mixer for LED strips.
-# Checkout my tutorial at
+# Checkout the tutorial at
 # http://www.knight-of-pi.org/color-mixer-control-a-rgb-led-strip-with-the-raspberry-pi-and-the-n-channel-mosfet-irlb8721/
 # kop
 
