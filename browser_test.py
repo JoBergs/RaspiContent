@@ -8,6 +8,6 @@ profile = webdriver.FirefoxProfile()
 profile.native_events_enabled = False
 driver = webdriver.Firefox(profile)
 
-driver.get("http://www.google.com")
+driver.get("http://www.duckduckgo.com")
 print(driver.page_source.encode('utf-8'))
 driver.quit()
