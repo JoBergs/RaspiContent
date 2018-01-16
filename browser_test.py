@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/python3-browser-tests-on-a-raspberry-pi-with-firefox-virtualdisplay-selenium-and-pytest/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+
 from selenium import webdriver
 from pyvirtualdisplay import Display
 
