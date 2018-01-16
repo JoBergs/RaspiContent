@@ -24,6 +24,5 @@ result_list = driver.find_elements_by_class_name("result")
 results = [tmp.text for tmp in result_list]
 
 assert any(["knight-of-pi" in text for text in results]) == True
-assert not all(["knight-of-pi" in text for text in results]) == False
 
 driver.quit()
