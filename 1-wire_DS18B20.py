@@ -1,52 +1,16 @@
 # WIP! DO NOT USE!
 
-import os
-
-# Install 1-WIRE
-
-#     sudo nano /boot/config.txt
-
-# Add 
-
-#     dtoverlay=w1-gpio
-
-# Then do
-
-#     sudo modprobe w1-gpio
-#     sudo modprobe w1-therm
-#     sudo reboot
+import glob, os
 
 # modify this:
-#   remove logging
-#   simplify file access (glob)
 #   make a function that perpetually reads the temperature and stores it to a file
 
 class TemperatureSensor:
-    def __init__(self, base_path= '/sys/bus/w1/devices', 
-                     file_name='w1_slave', default=25.0):
+    def __init__(self, base_path= '/sys/bus/w1/devices/', 
+                     file_name='/w1_slave', default=25.0):
 
         self.default = default
-        # self.logger = logging.getLogger('Error_Log')  
-        self.sensor_path = self.get_sensor_path(base_path, file_name)  
-            
-
-    def get_sensor_path(self, base_path, sensor_file):
-        """ Naive method to find the 1-wire sensors directory and
-            return the assembled path to the sensor file. """
-
-        sensor_dir = None
-
-        # list comprehension should work, too
-        for root, dirs, files in os.walk(base_path):
-            for item in dirs:
-                if item != 'w1_bus_master1':
-                    sensor_dir = item
-
-        if sensor_dir:
-            return '/'.join((base_path, sensor_dir, sensor_file))
-        else:           
-            print("Can't find temperature sensor!")
-            return None
+        self.sensor_path = glob.glob(base_path + '28*')[0] + file_name 
 
     def get_value(self):
         temperature = self.default
@@ -64,7 +28,6 @@ class TemperatureSensor:
                     raise Exception()        
         except:          
             print("Can't read temperature sensor!")   
-            # self.logger.error("Can't read temperature sensor!")
 
         return float(temperature) 
 
