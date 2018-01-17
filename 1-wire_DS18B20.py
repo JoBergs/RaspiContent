@@ -1,5 +1,7 @@
 # WIP! DO NOT USE!
 
+import os
+
 # Install 1-WIRE
 
 #     sudo nano /boot/config.txt
@@ -24,7 +26,7 @@ class TemperatureSensor:
                      file_name='w1_slave', default=25.0):
 
         self.default = default
-        self.logger = logging.getLogger('Error_Log')  
+        # self.logger = logging.getLogger('Error_Log')  
         self.sensor_path = self.get_sensor_path(base_path, file_name)  
             
 
@@ -43,7 +45,7 @@ class TemperatureSensor:
         if sensor_dir:
             return '/'.join((base_path, sensor_dir, sensor_file))
         else:           
-            self.logger.error("Can't find temperature sensor!")
+            print("Can't find temperature sensor!")
             return None
 
     def get_value(self):
@@ -60,7 +62,12 @@ class TemperatureSensor:
                     print("Temperature is " + str(temperature) )
                 else:
                     raise Exception()        
-        except:           
-            self.logger.error("Can't read temperature sensor!")
+        except:          
+            print("Can't read temperature sensor!")   
+            # self.logger.error("Can't read temperature sensor!")
 
         return float(temperature) 
+
+if __name__ == "__main__":
+    sensor = TemperatureSensor()
+    print(sensor.get_value())
