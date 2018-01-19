@@ -1,6 +1,6 @@
 # WIP! DO NOT USE!
 
-import glob, os, time
+import glob, os, sys, time
 import numpy as np
 
 
@@ -45,5 +45,9 @@ class TemperatureSensor:
 
 if __name__ == "__main__":
     sensor = TemperatureSensor()
-    print(sensor.get_temperature())
-    # sensor.log_temperature()
+
+    if sys.argv[-1] == "log":
+        sensor.log_temperature()
+    else:
+        print(sensor.get_temperature())
+    
