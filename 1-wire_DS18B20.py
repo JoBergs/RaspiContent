@@ -38,7 +38,6 @@ class TemperatureSensor:
             temperatures.append(self.get_temperature())
             print('Temperature: ' + str(temperatures[-1]))
             np.save('temperatures', np.array(temperatures))
-            print(temperatures)
             
         # load stored temperatures with
         # np.load('temperatures.npy')
@@ -50,4 +49,3 @@ if __name__ == "__main__":
         sensor.log_temperature()
     else:
         print(sensor.get_temperature())
-    
