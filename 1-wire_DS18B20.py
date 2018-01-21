@@ -1,4 +1,8 @@
-# WIP! DO NOT USE!
+#!/usr/bin/python3
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/measuring-and-logging-temperature-with-the-1-wire-sensor-ds18b20-and-a-raspberry-pi/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 import glob, os, sys, time
 import numpy as np
