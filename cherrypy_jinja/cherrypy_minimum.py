@@ -3,6 +3,9 @@ import cherrypy
 from jinja2 import Environment, FileSystemLoader
 env = Environment(loader=FileSystemLoader('templates'))
 
+# Template ./templates/index.html contains
+# We are the knights that always say <h1>{{ saying }}</h1>
+
 class MinimumServer:
     @cherrypy.expose
     def index(self):
