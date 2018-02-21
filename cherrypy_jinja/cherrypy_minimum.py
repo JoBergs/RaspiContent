@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/better-rpi-remote-controls-cherrypy-and-jinja-for-html-templating/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
+
 import cherrypy
 
 from jinja2 import Environment, FileSystemLoader
