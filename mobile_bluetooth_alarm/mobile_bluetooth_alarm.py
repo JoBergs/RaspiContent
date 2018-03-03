@@ -1,5 +1,8 @@
 #!/usr/bin/python
 #encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/intrusion-detection-with-a-raspberry-pi-and-a-smartphone-over-bluetooth/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 # This program implements a simple intrusion detection.
 # If a bluetooth device (e.g. a mobile phone) is detected, no alarm is

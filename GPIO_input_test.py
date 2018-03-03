@@ -1,5 +1,8 @@
-#!/usr/bin/python
-#encoding=utf-8
+#!/usr/bin/python3
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/digital-sensors-and-the-raspberry-pi-with-the-smoke-detector-mq-x-as-example/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 # the sensor has to be connected to pin 1 for power, pin 6 for ground
 # and pin 7 for signal(board numbering!).

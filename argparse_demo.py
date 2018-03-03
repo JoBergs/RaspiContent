@@ -1,6 +1,8 @@
-# This is a demo script for the Python3 argparse module.
-# Checkout the tutorial at
-# http://www.knight-of-pi.org/python-argparse-massively-simplifies-parsing-complex-command-line-parameters/
+#!/usr/bin/python3
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/python-argparse-massively-simplifies-parsing-complex-command-line-parameters/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 import argparse, sys
 

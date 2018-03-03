@@ -1,8 +1,8 @@
 #!/usr/bin/python
 #encoding:utf-8
-
-# Sample script for the Tutorial "Ultrasonic range detection with the Raspberry Pi" on
-# http://www.knight-of-pi.org/ultrasonic-range-detection-with-the-raspberry-pi
+#Tutorial: http://www.knight-of-pi.org/ultrasonic-range-detection-with-the-raspberry-pi
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 import time
 import RPi.GPIO as GPIO

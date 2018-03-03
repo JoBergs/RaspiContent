@@ -1,3 +1,9 @@
+#!/usr/bin/python
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/simple-dc-motor-board-for-the-raspberry-pi-with-ic-l293-and-software-pulse-width-modulation/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
+
 import RPi.GPIO as GPIO
 from time import sleep
  

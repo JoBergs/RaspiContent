@@ -1,5 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/using-pi-switch-for-easy-wireless-data-transmission-with-a-raspberry-pi/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 import sys
 

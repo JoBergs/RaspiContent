@@ -1,4 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/python
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/reading-an-analog-potentiometer-with-the-ad-converter-mcp3008-and-spi/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
  
 # Written by Limor "Ladyada" Fried for Adafruit Industries, (c) 2015
 # This code is released into the public domain

@@ -1,15 +1,15 @@
-# -*- coding: utf-8-*-
+#!/usr/bin/python
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/raspberry-pi-and-jasper-a-custom-voice-command-for-measuring-the-distance
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 # This is a Python Script which could be imported by Jasper as voice command
 # on a Raspberry Pi. For fun, an ultrasonic sensor was added. If Jasper is running
 # and hears the command 'What', the distance to the ultrasonic sensor is measured
 # and Jasper tells the result.
-# Before running this script with or without Jasper, PiGPIO (Website: http://abyz.co.uk/rpi/pigpio/)
-# needs to be installed for sudoless GPIO access pre Raspbian Jessie. 
-# Then, pigpiod needs to be activated with
-# sudo pigpiod
-# This script is a part of the tutorial at
-# www.knight-of-pi.org/raspberry-pi-and-jasper-a-custom-voice-command-for-measuring-the-distance
+# For Raspbian pre Jessie, PiGPIO (Website: http://abyz.co.uk/rpi/pigpio/)
+# needs to be installed & started for sudoless GPIO access.
 
 import re, time
 

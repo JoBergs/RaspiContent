@@ -1,3 +1,9 @@
+#!/usr/bin/python
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/webiopi-a-simple-but-great-web-api-for-the-raspberry-pi/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
+
 import webiopi
 
 GPIO = webiopi.GPIO

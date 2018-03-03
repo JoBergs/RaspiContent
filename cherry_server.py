@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/cherrypy-an-elegant-python-webserver-for-raspberry-pi-remote-controls/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
+
 import random, string
 from time import sleep
 

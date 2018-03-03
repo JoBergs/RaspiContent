@@ -1,5 +1,8 @@
 #!/usr/bin/python
 #encoding: utf-8
+#Tutorial: http://www.knight-of-pi.org/joker-a-raspberry-pi-joke-telling-machine-using-the-adafruit-lcd-plate/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 import math
 import time

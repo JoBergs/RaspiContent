@@ -1,4 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/python
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/accessing-and-parsing-emails-with-the-raspberry-pi-and-imapclient/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
  
 import os, sys, time, argparse
 

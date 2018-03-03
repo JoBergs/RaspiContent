@@ -1,5 +1,8 @@
 #!/usr/bin/python
-#encoding: utf-8
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/build-a-basic-raspberry-pi-robot-in-no-time-with-the-raspirobotboard-v3-hat/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 import time
 

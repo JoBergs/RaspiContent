@@ -1,5 +1,8 @@
 #!/usr/bin/python
 #encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/kivy-on-a-raspberry-pi-control-light-color-with-a-touch-interface/
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 from time import sleep
 
