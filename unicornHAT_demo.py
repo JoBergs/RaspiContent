@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 #encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/first-experiments-with-the-unicornhat
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
 
 from time import sleep
 from random import randint
