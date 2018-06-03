@@ -1,5 +1,14 @@
-#!/usr/bin/env python
-#
+#!/usr/bin/python2
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/[FILL OUT]
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
+
+# MODIFIED for a demo equalizer on the UnicornHATdh
+
+############################## 
+# ORIGIMAL HEADER BELOW
+
 # Licensed under the BSD license.  See full license in LICENSE file.
 # http://www.lightshowpi.org/
 #
