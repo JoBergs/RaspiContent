@@ -294,14 +294,8 @@ class Lightshow(object):
             c3.append(brightness[pin+6]*255)
             c4.append(brightness[pin+9]*255)
 
-        # print('brightness')
-        # print(c1)
-        # print(c2)
-        # print(c3)
-
         for x in range(16):
             for y in range(16):
-            # r, g, b = randint(0, 255), randint(0, 255), randint(0, 255)
                 if x <= 7 and y <= 7:
                     unicornhathd.set_pixel(x, y, c1[0], c1[1], c1[2])
                 elif x <= 7 and y > 7:
@@ -312,28 +306,6 @@ class Lightshow(object):
                     unicornhathd.set_pixel(x, y, c4[0], c4[1], c4[2])
 
         unicornhathd.show()
-        # c1, c2, c3 = [], [], []
-        # for pin in range(3):
-        #     c1.append(brightness[pin]*255)
-        #     c2.append(brightness[pin+3]*255)
-        #     c3.append(brightness[pin+6]*255)
-
-        # # print('brightness')
-        # # print(c1)
-        # # print(c2)
-        # # print(c3)
-
-        # for x in range(16):
-        #     for y in range(16):
-        #         if x <= 7:
-        #             if y <= 7:
-        #                 unicornhathd.set_pixel(x, y, c1[0], c1[1], c1[2])
-        #             else:
-        #                 unicornhathd.set_pixel(x, y, c2[0], c2[1], c2[2])
-        #         else:
-        #             unicornhathd.set_pixel(x, y, c3[0], c3[1], c3[2])
-
-        # unicornhathd.show()
         # /HACK
 
         # TURNED OFF FOR HACK
