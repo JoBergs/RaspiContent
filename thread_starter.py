@@ -22,7 +22,7 @@ def start_thread(current):
     except:
        print ("Error: unable to start thread")
 
-thread_count = 100
+thread_count = 1000
 current = 0
 while current < thread_count:
     current += 1
