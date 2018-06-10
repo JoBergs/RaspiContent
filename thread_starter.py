@@ -16,14 +16,13 @@ def print_time( threadName, delay):
       print ("%s: %s" % ( threadName, time.ctime(time.time()) ))
 
 # Create two threads as follows
-def start_thread()
+def start_thread(current):
     try:
        _thread.start_new_thread( print_time, ("Thread-" + str(current), 2, ) )
-       # _thread.start_new_thread( print_time, ("Thread-2", 4, ) )
     except:
        print ("Error: unable to start thread")
 
-thread_count = 30
+thread_count = 100
 current = 0
 while current < thread_count:
     current += 1
