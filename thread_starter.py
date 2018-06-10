@@ -27,6 +27,3 @@ current = 0
 while current < thread_count:
     current += 1
     start_thread(current)
-
-   #  if 
-   # pass
