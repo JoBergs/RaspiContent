@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #encoding:utf-8
-#Tutorial: http://www.knight-of-pi.org/[FILL OUT YAY]
+#Tutorial: http://www.knight-of-pi.org/[FILL OUT]
 #Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
 # Author: Johannes Bergs
 
