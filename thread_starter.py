@@ -10,7 +10,7 @@ import time
 # Define a function for the thread
 def print_time( threadName, delay):
    count = 0
-   while count < 5:
+   while count < 50:
       time.sleep(delay)
       count += 1
       print ("%s: %s" % ( threadName, time.ctime(time.time()) ))
@@ -22,7 +22,7 @@ def start_thread(current):
     except:
        print ("Error: unable to start thread")
 
-thread_count = 100
+thread_count = 10
 current = 0
 while current < thread_count:
     current += 1
