@@ -11,6 +11,8 @@ GPIO.setmode(GPIO.BOARD)
 # LED_PIN=int(os.environ['LED_PIN'])
 LED_PIN = 11
 
+# Environment variables are a way to pass distinct data to nodes for initialisation ect.
+
 # Set Pin 11, 16 and 7 on the GPIO header to act as an output
 GPIO.setup(LED_PIN,GPIO.OUT)
 
