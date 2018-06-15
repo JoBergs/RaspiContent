@@ -16,4 +16,4 @@ RUN pip3 install RPi.GPIO
 
 CMD [ "python3", "app.py" ]
 
-COPY blinking.py /data
+COPY app.py /data
