@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 #encoding:utf-8
-#Tutorial: http://www.knight-of-pi.org/[FILL OUT]
+#Tutorial: http://www.knight-of-pi.org/a-simple-equalizer-for-the-unicornhat-with-lightshowpi/
 #Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
 # Author: Johannes Bergs
 
