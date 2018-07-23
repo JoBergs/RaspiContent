@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+#encoding:utf-8
+#Tutorial: http://www.knight-of-pi.org/python-webframework-django-on-the-raspberry-pi
+# Taken from the ebook Test-Driven Development with Python by Harry Percival:
+# https://github.com/hjwp/book-example
+#Licence: http://creativecommons.org/licenses/by-nc-sa/3.0/
+# Author: Johannes Bergs
+
 from django.shortcuts import redirect, render
 from lists.models import Item, List
 
